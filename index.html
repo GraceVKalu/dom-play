@@ -1,1 +1,101 @@
-<h1>DOM Play assignment goes here</h1>
+<html>
+    <head>
+        <title>DOM Play</title>
+        <link href="styles.css" rel="stylesheet">
+        <style>
+            #clickSpans span{
+                background.color:aqua;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container"style="padding-top: 5px;">
+        <h1>DOM Play</h1>
+        <br>
+        <h2>The Addams Family</h2>
+        <br>
+        <div id="clickSpans">
+            <p><span data-actor="GORDON">GORDON: Is this the one, Mother? The deadbeat you mentioned?</span></p>
+            <p><span data-actor="TULLY">TULLY: (choking) Wait a minute, hold on! You have to listen to me!</span></p>
+            <p><span data-actor="ABIGAIL">ABIGAIL: We do, Mr. Alford? And why?</span></p>
+            <p><span data-actor="TULLY">TULLY: Please... Just hear me out...</span></p>
+            <p><span data-actor="GORDON">GORDON: Mother... your call.</span></p>
+            <p><span data-actor="ABIGAIL">ABIGAIL: (to Tully)
+                Gordon and I enjoy a very... special
+                relationship. I'm wild about him.</span></p>
+            <p><span data-actor="GORDON">GORDON: (infatuated)
+                She's a pip.</span></p>
+            <p><span data-actor="ABIGAIL">ABIGAIL: Refreshing, no?
+                (after a beat)
+                Down, Gordon.</span></p>
+            <p><span data-actor="GORDON">GORDON: Mother...</span></p>
+            <p><span data-actor="ABIGAIL">ABIGAIL: (sternly)
+                Gordon.</span></p>
+            <p><span data-actor="TULLY">TULLY: Gordon!</span></p>
+            <p><span data-actor="ABIGAIL">ABIGAIL: And how is your wife, Mr. Alford? I've
+                heard so much about her. Still
+                charming? Still spending?</span></p>
+            <p><span data-actor="TULLY">TULLY: I don't have the money to repay you...
+                I've tried everything...</span></p>
+            <p><span data-actor="ABIGAIL">ABIGAIL: We've lent you a considerable sum. Many
+                thousands of dollars. Payment due.</span></p>
+            <p><span data-actor="TULLY">TULLY: Soon, I promise.</span></p>
+            <p><span data-actor="ABIGAIL">ABIGAIL: Oh, Gordon - I want to believe him...</span></p>
+            <p><span data-actor="GORDON">GORDON: So do I...</span></p>
+            <p><span data-actor="ABIGAIL">ABIGAIL: He's so terribly trusting.</span></p>
+            <p><span data-actor="GORDON">GORDON: She's a saint.</span></p>
+            <p><span data-actor="ABIGAIL">ABIGAIL: Silly boy... make me proud.</span></p>
+        <br>
+        <a href="https://www.dailyscript.com/scripts/the_addams_family.pdf">Addams Family Script</a>
+        <br>
+        <br>
+        <br>
+        </div>
+        </div>
+        <script>
+            
+            //spans is var so data is global it used to be const
+            var spans = document.querySelectorAll("#clickSpans span");
+            // console.log(spans);
+
+            for(const mySpan of spans){
+
+                mySpan.addEventListener("click", function(event){
+
+                    //alert(mySpan.dataset.actor);
+
+                    //let myActor = mySpan.dataset
+
+                    highlightActor(mySpan.dataset.actor);
+
+                    /* if (mySpan.style.backgroundColor == 'yellow'){//yellow background, turn to white 
+                        mySpan.style.backgroundColor = 'white'; 
+                    }else{ //not yellow, so turn to yellow 
+                        mySpan.style.backgroundColor = 'yellow'; 
+                    } */
+                    
+                });
+
+            }
+            
+            function highlightActor(myActor){
+
+                //alert("hello from highlightActor: " + myActor)
+            
+
+                for(const mySpan of spans){
+                    if(mySpan.dataset.actor.includes(myActor)){ //current actor, highlight
+                    mySpan.style.backgroundColor = 'yellow';
+                    mySpan.style.fontWeight = 'bold';
+                }
+                else{
+                    mySpan.style.backgroundColor = 'lightgray'; // not current actor, no highlight
+                    mySpan.style.fontWeight = 'normal';
+                    } 
+                }
+            }
+            
+        </script>
+    </body>
+
+</html>
